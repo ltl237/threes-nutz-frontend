@@ -1,38 +1,61 @@
-import React, {Fragment, Component} from 'react';
+import React from 'react';
 import '../App.css';
 
+class Signup extends React.Component {
 
-function Signup(props) {
-
-  const handleClick = (event) => {
-
-    event.preventDefault()
-    let loginUserObj = {
-      username: event.target.firstChild.nextSibling.value,
-      password: event.target.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.value
-
-    }
-    // debugger
-    console.log(loginUserObj)
-    props.handleSignupSubmit(loginUserObj)
+  state = {
+    username: "",
+    password: ""
   }
 
-  return (
-    <div className="signup-div">
-      <h1> Sign Up here !</h1>
-      <form onSubmit={handleClick}>
-        <label>Desired Username</label>
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
 
-        <input type="text" name="username"></input>
-        <br></br>
-        <label>Desired Password</label>
-        <input type="text" name="password"></input>
-        <br></br>
-        <input type="submit" value="Signup"></input>
-      </form>
+  handleSubmit = (event) => {
+    event.preventDefault()
+    fetch("http://localhost:3000/api/v1/users", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"Accepts": "application/json",
+			},
+			body: JSON.stringify({
+        user: this.state
+      })
+		})
+		.then(res => res.json())
+		.then((response) => {
+      console.log(response);
+			if (response.errors){
+				alert(response.errors)
+			} else {
+				localStorage.setItem("token", response.token)
+				this.props.setCurrentUser(response.user)
+			}
+		})
+  }
 
-    </div>
-  );
+  render() {
+    return (
+      <div className="signup-div">
+        <h1> Sign Up here !</h1>
+        <form onSubmit={this.handleSubmit}>
+          <label>Desired Username</label>
+          <input onChange={this.handleChange} type="text" name="username"></input>
+          <br/>
+          <label>Desired Password</label>
+          <input onChange={this.handleChange} type="text" name="password"></input>
+          <br/>
+          <input type="submit" value="Signup"></input>
+        </form>
+
+      </div>
+    );
+  }
+
 }
 
 export default Signup;

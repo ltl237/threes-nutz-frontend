@@ -1,47 +1,64 @@
-import React, {Fragment, Component} from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import { Route } from 'react-router-dom'
 import './App.css';
-import Login from './components/Login'
-import LoginSignupContainer from "./containers/LoginSignupContainer"
-const url = 'http://localhost:3001/api/v1/users'
+import NavBar from './components/NavBar'
+import Login from "./components/Login"
+import Signup from "./components/Signup"
 
 class App extends Component {
 
   state = {
-    userObjLoggedIn: {}
+    currentUser: null
   }
 
-  handleLoginSubmit = (userObj) => {
-    this.setState({
-      userObjLoggedIn: userObj
-    })
-  }
-
-  handleSignupSubmit = (userObj) => {
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        user: {
-          username: userObj.username,
-          password: userObj.password
+  componentDidMount() {
+    const token = localStorage.getItem('token')
+    if (token) {
+      fetch("http://localhost:3000/api/v1/auto_login", {
+        headers: {
+          "Authorization": token
         }
       })
-    })
-    .then(res => res.json())
-    .then(console.log)
+      .then(res => res.json())
+      .then(response => {
+        if (response.errors) {
+          localStorage.removeItem("user_id")
+          alert(response.errors)
+        } else {
+          this.setState({
+            currentUser: response
+          })
+        }
+      })
+    }
   }
 
+  setCurrentUser = (user) => {
+    this.setState({
+      currentUser: user
+    })
+  }
+
+  logout = () => {
+    this.setState({
+      currentUser: null
+    })
+    this.props.history.push("/login")
+  }
+
+
   render(){
-    console.log(this.state.userObjLoggedIn)
+    console.log(this.state.currentUser);
     return (
       <div className="App">
-
-        Hello World
-        <LoginSignupContainer handleSignupSubmit={this.handleSignupSubmit} userObjLoggedIn={this.state.userObjLoggedIn} handleLoginSubmit={this.handleLoginSubmit}/>
+        <h1>Home</h1>
+        <NavBar currentUser={this.state.currentUser} logout={this.logout} />
+        <Route path="/login" render={(routerProps) => {
+							return <Login setCurrentUser={this.setCurrentUser} {...routerProps}/>
+						}} />
+        <Route path="/signup" render={(routerProps) => {
+							return <Signup setCurrentUser={this.setCurrentUser} {...routerProps}/>
+						}} />
       </div>
     );
   }
