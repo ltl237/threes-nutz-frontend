@@ -1,26 +1,50 @@
-import React from 'react';
+import React, {Fragment, Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Login from './components/Login'
+import LoginSignupContainer from "./containers/LoginSignupContainer"
+const url = 'http://localhost:3001/api/v1/users'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    userObjLoggedIn: {}
+  }
+
+  handleLoginSubmit = (userObj) => {
+    this.setState({
+      userObjLoggedIn: userObj
+    })
+  }
+
+  handleSignupSubmit = (userObj) => {
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        user: {
+          username: userObj.username,
+          password: userObj.password
+        }
+      })
+    })
+    .then(res => res.json())
+    .then(console.log)
+  }
+
+  render(){
+    console.log(this.state.userObjLoggedIn)
+    return (
+      <div className="App">
+
+        Hello World
+        <LoginSignupContainer handleSignupSubmit={this.handleSignupSubmit} userObjLoggedIn={this.state.userObjLoggedIn} handleLoginSubmit={this.handleLoginSubmit}/>
+      </div>
+    );
+  }
 }
 
 export default App;
