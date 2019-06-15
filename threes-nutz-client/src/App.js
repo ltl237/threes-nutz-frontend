@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar'
 import Login from "./components/Login"
 import Signup from "./components/Signup"
+import PostContainer from "./containers/PostContainer"
 
 class App extends Component {
 
@@ -53,6 +54,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Home</h1>
+        <PostContainer />
         <NavBar currentUser={this.state.currentUser} logout={this.logout} />
         <Route path="/login" render={(routerProps) => {
 							return <Login setCurrentUser={this.setCurrentUser} {...routerProps}/>

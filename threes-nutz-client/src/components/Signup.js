@@ -28,7 +28,6 @@ class Signup extends React.Component {
 		})
 		.then(res => res.json())
 		.then((response) => {
-      console.log(response.jwt);
 			if (response.errors){
 				alert(response.errors)
 			} else {
@@ -47,11 +46,10 @@ class Signup extends React.Component {
           <input onChange={this.handleChange} type="text" name="username"></input>
           <br/>
           <label>Desired Password</label>
-          <input onChange={this.handleChange} type="text" name="password"></input>
+          <input onChange={this.handleChange} type="password" name="password"></input>
           <br/>
           <input type="submit" value="Signup"></input>
         </form>
-
       </div>
     );
   }
