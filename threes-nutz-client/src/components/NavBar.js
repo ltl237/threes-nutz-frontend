@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 class NavBar extends Component {
 
   render() {
-    console.log(this.props.currentUser);
+    // console.log(this.props.currentUser);
     return (
       <div className="NavBar">
         <Link to="/login">

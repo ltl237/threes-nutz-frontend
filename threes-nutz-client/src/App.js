@@ -11,27 +11,27 @@ class App extends Component {
     currentUser: null
   }
 
-  componentDidMount() {
-    const token = localStorage.getItem('token')
-    if (token) {
-      fetch("http://localhost:3000/api/v1/auto_login", {
-        headers: {
-          "Authorization": token
-        }
-      })
-      .then(res => res.json())
-      .then(response => {
-        if (response.errors) {
-          localStorage.removeItem("user_id")
-          alert(response.errors)
-        } else {
-          this.setState({
-            currentUser: response
-          })
-        }
-      })
-    }
-  }
+  // componentDidMount() {
+  //   const token = localStorage.getItem('token')
+  //   if (token) {
+  //     fetch("http://localhost:3000/api/v1/auto_login", {
+  //       headers: {
+  //         "Authorization": token
+  //       }
+  //     })
+  //     .then(res => res.json())
+  //     .then(response => {
+  //       if (response.errors) {
+  //         localStorage.removeItem("user_id")
+  //         alert(response.errors)
+  //       } else {
+  //         this.setState({
+  //           currentUser: response
+  //         })
+  //       }
+  //     })
+  //   }
+  // }
 
   setCurrentUser = (user) => {
     this.setState({
@@ -43,6 +43,7 @@ class App extends Component {
     this.setState({
       currentUser: null
     })
+    localStorage.removeItem("token")
     this.props.history.push("/login")
   }
 

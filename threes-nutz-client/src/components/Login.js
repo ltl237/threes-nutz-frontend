@@ -15,7 +15,8 @@ class Login extends React.Component {
     })
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault()
     fetch("http://localhost:3000/api/v1/login", {
       method: "POST",
       headers: {
@@ -31,7 +32,7 @@ class Login extends React.Component {
       if (response.errors) {
         alert(response.errors)
       } else {
-        localStorage.setItem("token", response.token)
+        localStorage.setItem("token", response.jwt)
         this.props.setCurrentUser(response.user)
       }
     })
