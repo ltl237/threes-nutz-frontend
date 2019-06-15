@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import { Route } from 'react-router-dom'
 import './App.css';
 import NavBar from './components/NavBar'
 import Login from "./components/Login"
 import Signup from "./components/Signup"
-import PostContainer from "./containers/PostContainer"
+import LoginSignupContainer from "./containers/LoginSignupContainer"
 
 class App extends Component {
 
@@ -14,6 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem('token')
+    console.log("TOKEN: ", token)
     if (token) {
       fetch("http://localhost:3000/api/v1/auto_login", {
         headers: {
@@ -24,8 +25,8 @@ class App extends Component {
       .then(response => {
         console.log(response);
         if (response.errors) {
-          localStorage.removeItem("token")
-          alert(response.errors)
+          localStorage.removeItem("user_id")
+          // alert(response.errors)
         } else {
           this.setState({
             currentUser: response
@@ -51,17 +52,24 @@ class App extends Component {
 
 
   render(){
+    // <NavBar currentUser={this.state.currentUser} logout={this.logout} />
+
     return (
       <div className="App">
-        <h1>Home</h1>
-        <PostContainer />
-        <NavBar currentUser={this.state.currentUser} logout={this.logout} />
-        <Route path="/login" render={(routerProps) => {
-							return <Login setCurrentUser={this.setCurrentUser} {...routerProps}/>
-						}} />
-        <Route path="/signup" render={(routerProps) => {
-							return <Signup setCurrentUser={this.setCurrentUser} {...routerProps}/>
-						}} />
+        <div className="nav">
+          {
+            this.state.currentUser ?
+              <Fragment>
+                <div>{this.state.currentUser.username}</div>
+
+              </Fragment>
+              :
+              <div><p>LOGO</p></div>
+          }
+        </div>
+
+        <LoginSignupContainer currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
+
       </div>
     );
   }

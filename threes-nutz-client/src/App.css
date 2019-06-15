@@ -25,9 +25,6 @@
 }
 
 
-
-
-
 .form-style-9{
 	max-width: 450px;
 	background: #FAFAFA;
@@ -140,4 +137,42 @@
 }
 .select-css option {
 	font-weight:normal;
+=======
+.nav {
+  background-color: lightblue;
+  /* position: relative; */
+  border: 1px solid blue;
+  height: 45px;
+  text-align: left;
+}
+
+.login-div {
+  position: relative;
+}
+.login-signup-div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.credentials-div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  width: 24%;
+  height: 100%;
+}
+.homepage-div-container{
+  position: relative;
+  text-align: left;
+  width: 75%;
+  height: 100%;
+}
+
+.homepage-div-container img{
+  /* position: absolute; */
+  display: inline-block;
+
+  width: 100%;
+  height: 100%;
 }
