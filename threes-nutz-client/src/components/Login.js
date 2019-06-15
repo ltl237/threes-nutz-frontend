@@ -29,25 +29,28 @@ class Login extends React.Component {
     })
     .then(res => res.json())
     .then(response => {
-      console.log(response);
-      console.log(this.state);
       if (response.errors) {
-        alert(response.errors)
+        console.log(response.errors)
       } else {
         localStorage.setItem("token", response.jwt)
         this.props.setCurrentUser(response.user)
+        console.log("Login.js response: ", response)
       }
     })
   }
 
   render() {
+
     return(
       <div className="login-div">
         <br/><br/><br/>
-        <h1>Please Enter Your Login Details</h1>
         <form onSubmit={this.handleSubmit}>
+          <label>Username</label>
           <input onChange={this.handleChange} type="text" name="username" placeholder="username..."></input>
+          <br></br>
+          <label>Password</label>
           <input onChange={this.handleChange} type="text" name="password" placeholder="password..."></input>
+          <br></br>
           <input type="submit" value="Login"></input>
         </form>
       </div>
