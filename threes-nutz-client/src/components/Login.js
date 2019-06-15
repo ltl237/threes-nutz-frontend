@@ -29,6 +29,8 @@ class Login extends React.Component {
     })
     .then(res => res.json())
     .then(response => {
+      console.log(response);
+      console.log(this.state);
       if (response.errors) {
         alert(response.errors)
       } else {
