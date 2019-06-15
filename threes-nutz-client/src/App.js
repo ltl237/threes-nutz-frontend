@@ -21,8 +21,9 @@ class App extends Component {
       })
       .then(res => res.json())
       .then(response => {
+        console.log(response);
         if (response.errors) {
-          localStorage.removeItem("user_id")
+          localStorage.removeItem("token")
           alert(response.errors)
         } else {
           this.setState({
