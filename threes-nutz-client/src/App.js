@@ -23,6 +23,7 @@ class App extends Component {
       })
       .then(res => res.json())
       .then(response => {
+        console.log(response);
         if (response.errors) {
           localStorage.removeItem("user_id")
           // alert(response.errors)
@@ -68,7 +69,7 @@ class App extends Component {
         </div>
 
         <LoginSignupContainer currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
-        
+
       </div>
     );
   }
