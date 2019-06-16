@@ -65,6 +65,16 @@
   background-color: #fafafa;
 }
 
+.post-user {
+  display: inline-block;
+}
+
+.post-user p {
+  display: inline-block;
+  position: relative;
+
+}
+
 .single-post:hover {
   /* border-right: 1px solid #6b93de; */
   /* border-bottom: 1px solid #6b93de; */
@@ -73,8 +83,7 @@
   box-shadow: inset 6px 6px 3px #8387d461;
 }
 
-.single-post p:first-of-type {
-
+.post-content {
   margin-left: 25px;
 }
 
@@ -88,7 +97,7 @@
 	margin: 50px auto;
 	box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
 	border-radius: 10px;
-	border: 6px solid #305A72;
+	border: 6px solid #add8e6;
 }
 .form-style-9 ul{
 	padding:0;
@@ -137,8 +146,8 @@
 	-moz-box-shadow: inset 0px 1px 0px 0px #3985B1;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #3985B1;
 	box-shadow: inset 0px 1px 0px 0px #3985B1;
-	background-color: #216288;
-	border: 1px solid #17445E;
+	background-color: #6b93de;
+	border: 1px solid #add8e6;
 	display: inline-block;
 	cursor: pointer;
 	color: #FFFFFF;
@@ -201,15 +210,24 @@
   /* border: 1px solid blue; */
   /* height: 45px; */
   padding-top: .8%;
-  padding-bottom: .8%;
+  /* padding-bottom: -.8%; */
   text-align: left;
+}
+
+.nav-icon-div {
+  display: inline-block;
+  height: 1%;
 }
 
 .nav-icon {
   margin-left: 10px;
+  margin-right: 15px;
   font-size: 17px;
-  line-height: .1;
+  vertical-align: middle;
   color: rgb(54, 124, 255);
+  height: 30px;
+  display: inline;
+  padding-bottom: 9%;
 }
 
 .login-div {

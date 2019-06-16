@@ -7,17 +7,18 @@ import Signup from "./components/Signup"
 import LoginSignupContainer from "./containers/LoginSignupContainer"
 import PostContainer from "./containers/PostContainer"
 import NewPostForm from './components/NewPostForm'
+import TimeAgo from 'timeago-react'; // var TimeAgo = require('timeago-react');
 
 
 class App extends Component {
 
   state = {
-    currentUser: null
+    currentUser: null,
+    isCreatingNewPost: false
   }
 
   componentDidMount() {
     const token = localStorage.getItem('token')
-    console.log("TOKEN: ", token)
     if (token) {
       fetch("http://localhost:3000/api/v1/auto_login", {
         headers: {
@@ -26,7 +27,6 @@ class App extends Component {
       })
       .then(res => res.json())
       .then(response => {
-        console.log(response);
         if (response.errors) {
           localStorage.removeItem("user_id")
           // alert(response.errors)
@@ -53,10 +53,39 @@ class App extends Component {
     this.props.history.push("/login")
   }
 
+  creatingNewPost = (event) => {
+    event.preventDefault()
+    this.setState({
+      isCreatingNewPost: !this.state.isCreatingNewPost
+    })
+
+  }
+
+
+
+  createNewPost = (postObj) => {
+    console.log(postObj);
+
+    fetch('http://localhost:3000/api/v1/posts', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        post: postObj
+      })
+    })
+    .then(response => {
+      this.setState({
+          isCreatingNewPost: !this.state.isCreatingNewPost
+      })
+    })
+  }
+
 
   render(){
     // <NavBar currentUser={this.state.currentUser} logout={this.logout} />
-
     return (
       <div className="App">
         <div className="nav">
@@ -64,7 +93,9 @@ class App extends Component {
             this.state.currentUser ?
               <Fragment>
                 <div className="nav-icon-div">
-                  <div><strong><p className="nav-icon">{this.state.currentUser.username}</p></strong></div>
+                    <a href="/"><strong><p className="nav-icon">{this.state.currentUser.username}</p></strong></a>
+
+                    <a onClick={this.creatingNewPost} href=""><img className="nav-icon" src="./edit.png"/></a>
                 </div>
               </Fragment>
               :
@@ -74,7 +105,7 @@ class App extends Component {
         {
           this.state.currentUser ?
           <div className="wrapper">
-            <PostContainer />
+            <PostContainer currentUser={this.state.currentUser} createNewPost={this.createNewPost} isCreatingNewPost={this.state.isCreatingNewPost}/>
           </div>
 
           :

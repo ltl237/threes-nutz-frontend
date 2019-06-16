@@ -20,7 +20,7 @@ class Signup extends React.Component {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
-				"Accepts": "application/json",
+				"Accept": "application/json",
 			},
 			body: JSON.stringify({
         user: this.state

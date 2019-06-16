@@ -21,10 +21,10 @@ class LoginSignup extends Component {
   }
 
   render() {
-    console.log(!!this.props.currentUser)
+    // console.log(!!this.props.currentUser)
     return (
       <Fragment>
-      
+
       <div className="login-signup-div">
 
 
