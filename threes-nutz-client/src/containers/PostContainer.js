@@ -19,13 +19,13 @@ class PostContainer extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="post-container">
         {
           this.state.posts === [1] ?
           null
           :
           this.state.posts.map(post => {
-            return <Post post={post} />
+            return <Post key={post.id} post={post} />
           })
         }
 

@@ -74,7 +74,6 @@ class App extends Component {
           this.state.currentUser ?
           <div className="wrapper">
             <PostContainer />
-            <NewPostForm />
           </div>
 
           :
