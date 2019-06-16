@@ -74,6 +74,7 @@
 }
 
 .single-post p:first-of-type {
+
   margin-left: 25px;
 }
 
@@ -198,8 +199,17 @@
   background-color: lightblue;
   /* position: relative; */
   /* border: 1px solid blue; */
-  height: 45px;
+  /* height: 45px; */
+  padding-top: .8%;
+  padding-bottom: .8%;
   text-align: left;
+}
+
+.nav-icon {
+  margin-left: 10px;
+  font-size: 17px;
+  line-height: .1;
+  color: rgb(54, 124, 255);
 }
 
 .login-div {

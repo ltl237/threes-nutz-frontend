@@ -17,7 +17,7 @@ class Post extends Component {
 
 
   render() {
-    console.log(this.props.post.likes);
+    // console.log(this.props.post.user);
     return (
       <Fragment>
 
@@ -25,7 +25,8 @@ class Post extends Component {
         {
           this.props.post.likes ?
           <Fragment>
-            <h1 style={{borderBottom: '2px solid #6b93de', width: "30%"}}>{this.props.post.title}</h1>
+            <h2 >{this.props.post.title}</h2>
+            <h3 style={{color:'rgb(54, 124, 255)', lineHeight:'.69', verticalAlign: 'top',borderBottom: '2px solid rgb(54, 124, 255)', width: "15%"}}>- {this.props.post.user.username}</h3>
             <p>{this.props.post.content}</p>
             <p>{this.props.post.likes.length} Like(s)</p>
 

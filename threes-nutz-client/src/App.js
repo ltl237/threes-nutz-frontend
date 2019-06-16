@@ -63,8 +63,9 @@ class App extends Component {
           {
             this.state.currentUser ?
               <Fragment>
-                <div>{this.state.currentUser.username}</div>
-
+                <div className="nav-icon-div">
+                  <div><strong><p className="nav-icon">{this.state.currentUser.username}</p></strong></div>
+                </div>
               </Fragment>
               :
               <div><p>LOGO</p></div>
