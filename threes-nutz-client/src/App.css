@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: Helvetica;
 }
 
 .App-logo {
@@ -34,17 +35,19 @@
   display: inline-block;
   /* justify-content: space-between; */
   align-items: center;
+  background-color: #6b93de;
+
 }
 
 .post-container {
   position: relative;
   padding: 5px;
-  border-left: 1px solid grey;
-  border-right: 1px solid grey;
   width: 90%;
   text-align: center;
   margin: 0 auto;
   display: inline-block;
+  background-color: #edf0f5;
+  height: 100%;
 }
 
 .single-post {
@@ -52,13 +55,28 @@
   text-align: left;
   box-shadow: 6px 6px 3px #8387d461;
   margin: 0 auto;
-  margin-top: 10px;
-  padding: 5px;
+  margin-top: 25px;
+  padding: 25px;
   width: 85%;
   height: 20%;
-  border: 1px solid #6b93de;
+  /* border-left: 1px solid #6b93de; */
+  /* border-top: 1px solid #6b93de; */
   border-radius: 5px;
+  background-color: #fafafa;
 }
+
+.single-post:hover {
+  /* border-right: 1px solid #6b93de; */
+  /* border-bottom: 1px solid #6b93de; */
+  border-left: 0px;
+  border-top: 0px;
+  box-shadow: inset 6px 6px 3px #8387d461;
+}
+
+.single-post p:first-of-type {
+  margin-left: 25px;
+}
+
 
 
 
@@ -175,10 +193,11 @@
 .select-css option {
 	font-weight:normal;
 }
+
 .nav {
   background-color: lightblue;
   /* position: relative; */
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   height: 45px;
   text-align: left;
 }
