@@ -21,10 +21,9 @@ class LoginSignup extends Component {
   }
 
   render() {
-    console.log(!!this.props.currentUser)
     return (
       <Fragment>
-      
+
       <div className="login-signup-div">
 
 
@@ -37,12 +36,13 @@ class LoginSignup extends Component {
             this.state.signupIsClicked ?
               <Fragment>
                 <Signup setCurrentUser={this.props.setCurrentUser} />
-                <button onClick={this.changeSignup}>Back to Login</button>
+                <button className="flexy" onClick={this.changeSignup}>Back to Login</button>
               </Fragment>
               :
               <Fragment>
                 <Login setCurrentUser={this.props.setCurrentUser} />
-                <button onClick={this.changeSignup}>Sign Up !</button>
+                <p>Don't have an account yet? Just create an account below!</p>
+                <button className="flexy" onClick={this.changeSignup}>Sign Up !</button>
               </Fragment>
           }
         </div>

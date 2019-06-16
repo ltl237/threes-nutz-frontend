@@ -7,6 +7,7 @@ import Signup from "./components/Signup"
 import LoginSignupContainer from "./containers/LoginSignupContainer"
 import PostContainer from "./containers/PostContainer"
 import NewPostForm from './components/NewPostForm'
+import PostFilter from './components/PostFilter'
 
 
 class App extends Component {
@@ -26,10 +27,9 @@ class App extends Component {
       })
       .then(res => res.json())
       .then(response => {
-        console.log(response);
         if (response.errors) {
           localStorage.removeItem("user_id")
-          // alert(response.errors)
+          alert(response.errors)
         } else {
           this.setState({
             currentUser: response
@@ -50,7 +50,6 @@ class App extends Component {
       currentUser: null
     })
     localStorage.removeItem("token")
-    this.props.history.push("/login")
   }
 
 
@@ -59,20 +58,25 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="nav">
           {
             this.state.currentUser ?
-              <Fragment>
-                <div>{this.state.currentUser.username}</div>
 
-              </Fragment>
+                <div className="navsl">
+                    <p>Welcome to FaceNutz, {this.state.currentUser.username}! <small class="text-muted">(The best social network...)</small></p>
+
+                    <div>
+                      <button style={{"margin-right":"5px"}}>My Profile</button>
+                      <button onClick={this.logout}>Logout</button>
+                    </div>
+                </div>
+
               :
-              <div><p>LOGO</p></div>
+              <div className="navsl"><p>Please Login or SignUp To Get Started...</p></div>
           }
-        </div>
         {
           this.state.currentUser ?
-          <div className="wrapper">
+          <div className="container-me">
+
             <PostContainer />
             <NewPostForm />
           </div>

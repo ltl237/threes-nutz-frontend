@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  font-family: monospace;
 }
 
 .App-logo {
@@ -36,13 +37,17 @@
 }
 
 .form-style-9{
-	max-width: 450px;
+	/* max-width: 450px; */
+  height: 50% auto;
+  width: 30%;
 	background: #FAFAFA;
 	padding: 30px;
-	margin: 50px auto;
+	margin-right: 10%;
+	margin-top: 10%;
 	box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
 	border-radius: 10px;
 	border: 6px solid #305A72;
+  position: fixed;
 }
 .form-style-9 ul{
 	padding:0;
@@ -84,7 +89,7 @@
 }
 .form-style-9 ul li textarea{
 	width: 100%;
-	height: 100px;
+	height: 100%;
 }
 .form-style-9 ul li input[type="button"],
 .form-style-9 ul li input[type="submit"] {
@@ -148,13 +153,7 @@
 .select-css option {
 	font-weight:normal;
 }
-.nav {
-  background-color: lightblue;
-  /* position: relative; */
-  border: 1px solid blue;
-  height: 45px;
-  text-align: left;
-}
+
 
 .login-div {
   position: relative;
@@ -185,4 +184,116 @@
 
   width: 100%;
   height: 100%;
+}
+
+.flexy {
+  margin-left: 35%;
+}
+
+.moveMe {
+  margin-left: 40%;
+}
+
+
+.login-form{
+  text-align: center;
+	/* max-width: 450px; */
+  height: 50% auto;
+	margin-right: 10%;
+	margin-top: 10%;
+}
+
+
+
+.container {
+  margin-top: 2%;
+}
+
+.container-me {
+  display: flex;
+}
+
+.navsl {
+  padding: 2px;
+  padding-right: 4px;
+  display: flex;
+  justify-content: space-between;
+  background-color: lightblue;
+  /* position: fixed; */
+  width: 100%;
+  border-radius: 2px;
+	border: 4px solid #305A72;
+  font-size: 25px;
+  font-family: monospace;
+}
+
+.act-buttons {
+
+}
+
+
+.post-card {
+  background-color: #eee;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 0.5px;
+  border-color: rgba(150,150,150,0.5);
+  margin: 1vw;
+  padding: 1vw;
+  text-align: left;
+  height: 250px;
+  width: 250px;
+}
+
+.post-card:hover {
+  transform: scale(1.10);
+}
+
+
+
+.container {
+  margin-top: 3%;
+}
+
+
+
+a{
+    color:#47649F;
+}
+
+body{
+    font-family:'helvetica';
+}
+
+/*-- Bootstrap Override Style --*/
+
+
+/*-- Content Style --*/
+.post-footer-option li{
+    float:left;
+    margin-right:50px;
+    padding-bottom:15px;
+}
+
+.post-footer-option li a{
+    color:#AFB4BD;
+    font-weight:500;
+    font-size:1.3rem;
+}
+
+.photo-profile{
+    border:1px solid #DDD;
+}
+
+.anchor-username h4{
+    font-weight:bold;
+}
+
+.anchor-time{
+    color:#ADB2BB;
+    font-size:1.2rem;
+}
+
+.post-footer-comment-wrapper{
+    background-color:#F6F7F8;
 }

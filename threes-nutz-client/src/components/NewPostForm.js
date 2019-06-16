@@ -4,8 +4,11 @@ class NewPostForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
+
         <form className="form-style-9">
+          <h1>Create A New Post</h1>
+          <br/>
           <ul>
             <li>
               <input type="text" name="title" className="field-style field-split align-left" placeholder="Post Title" />
@@ -22,7 +25,7 @@ class NewPostForm extends Component {
               </select>
             </li>
             <li>
-              <input type="submit" value="Create Post" />
+              <input className="moveMe" type="submit" value="Create Post" />
             </li>
           </ul>
         </form>

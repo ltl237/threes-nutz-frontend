@@ -7,7 +7,7 @@ class Post extends Component {
   render() {
     console.log(this.props.post.likes);
     return (
-      <div>
+      <div className="post-card">
       {
         this.props.post.likes ?
         <Fragment>
@@ -18,7 +18,7 @@ class Post extends Component {
           <ul>
           {
             this.props.post.comments.map(comment => {
-              return <li>{comment.content}</li>
+              return <li key={comment.id}>{comment.content}</li>
             })
           }
           </ul>
