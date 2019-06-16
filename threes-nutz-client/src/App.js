@@ -5,6 +5,9 @@ import NavBar from './components/NavBar'
 import Login from "./components/Login"
 import Signup from "./components/Signup"
 import LoginSignupContainer from "./containers/LoginSignupContainer"
+import PostContainer from "./containers/PostContainer"
+import NewPostForm from './components/NewPostForm'
+
 
 class App extends Component {
 
@@ -67,9 +70,16 @@ class App extends Component {
               <div><p>LOGO</p></div>
           }
         </div>
+        {
+          this.state.currentUser ?
+          <div className="wrapper">
+            <PostContainer />
+            <NewPostForm />
+          </div>
 
-        <LoginSignupContainer currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
-
+          :
+          <LoginSignupContainer currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
+        }
       </div>
     );
   }

@@ -44,20 +44,14 @@ class Login extends React.Component {
     return(
       <div className="login-div">
         <br/><br/><br/>
-<<<<<<< HEAD
         <h1>Please Enter Your Login Details</h1>
-        <form onSubmit={this.handleSubmit} className="form-style-9">
-          <input onChange={this.handleChange} type="text" name="username" placeholder="username..."></input>
-          <input onChange={this.handleChange} type="password" name="password" placeholder="password..."></input>
-=======
-        <form onSubmit={this.handleSubmit}>
+        <form className="form-style-9" onSubmit={this.handleSubmit}>
           <label>Username</label>
           <input onChange={this.handleChange} type="text" name="username" placeholder="username..."></input>
           <br></br>
           <label>Password</label>
-          <input onChange={this.handleChange} type="text" name="password" placeholder="password..."></input>
+          <input onChange={this.handleChange} type="password" name="password" placeholder="password..."></input>
           <br></br>
->>>>>>> dde24c149b4528801a75f3e11c925872ead082ed
           <input type="submit" value="Login"></input>
         </form>
       </div>

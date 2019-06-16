@@ -24,6 +24,16 @@
   display: inline-grid;
 }
 
+.grid {
+  display: grid;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .form-style-9{
 	max-width: 450px;
@@ -137,7 +147,7 @@
 }
 .select-css option {
 	font-weight:normal;
-=======
+}
 .nav {
   background-color: lightblue;
   /* position: relative; */

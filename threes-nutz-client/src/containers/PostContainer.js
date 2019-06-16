@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Post from '../components/Post'
-import NewPostForm from '../components/NewPostForm'
 
 class PostContainer extends Component {
 
@@ -9,19 +8,18 @@ class PostContainer extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/api/v1/users/10`)
+    fetch(`http://localhost:3000/api/v1/posts`)
     .then(res => res.json())
     .then(data => {
       this.setState({
-        posts: data.posts
+        posts: data
       })
     })
   }
 
   render() {
-    console.log(this.state.posts);
     return (
-      <div>
+      <div className="container">
         {
           this.state.posts === [1] ?
           null
@@ -30,7 +28,7 @@ class PostContainer extends Component {
             return <Post post={post} />
           })
         }
-        <NewPostForm />
+
       </div>
     );
   }

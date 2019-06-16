@@ -15,7 +15,7 @@ class NewPostForm extends Component {
             </li>
             <li>
               <select className="select-css">
-                <option value="" disabled selected>Select A Category</option>
+                <option value="" default>Select A Category</option>
                 <option value="Technology">Technology</option>
                 <option value="Pop-Culture">Pop-Culture</option>
                 <option value="Sports">Sports</option>
