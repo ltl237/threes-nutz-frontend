@@ -20,7 +20,8 @@ class App extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token')
     if (token) {
-      fetch("http://localhost:3000/api/v1/auto_login", {
+      // fetch("http://localhost:3000/api/v1/auto_login", {
+      fetch("https://threes-nutz-backend.herokuapp.com/api/v1/auto_login", {
         headers: {
           "Authorization": token
         }
@@ -66,7 +67,8 @@ class App extends Component {
   createNewPost = (postObj) => {
     console.log(postObj);
 
-    fetch('http://localhost:3000/api/v1/posts', {
+    // fetch('http://localhost:3000/api/v1/posts', {
+    fetch('https://threes-nutz-backend.herokuapp.com/api/v1/posts', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
